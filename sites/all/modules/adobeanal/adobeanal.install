@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install hooks.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function adobeanal_uninstall() {
+  $vars = array(
+    'adobeanal_assetpath',
+    'adobeanal_pages',
+    'adobeanal_securepages',
+    'adobeanal_service',
+    'adobeanal_visibility',
+  );
+
+  foreach ($vars as $name) {
+    variable_del($name);
+  }
+}

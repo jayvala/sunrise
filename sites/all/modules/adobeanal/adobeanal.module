@@ -1,0 +1,137 @@
+<?php
+
+/**
+ * @file
+ * Adobe Analytics Intergration
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function adobeanal_menu() {
+  $items = array();
+
+  $items['admin/config/search/adobeanal'] = array(
+    'title' => 'Adobe Analytics Configuration',
+    'description' => 'Configure Adobe Analytics settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('adobeanal_admin'),
+    'access arguments' => array('administer adobe analytics'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Admin form callback.
+ */
+function adobeanal_admin() {
+  $form = array();
+
+  $form['adobeanal_service'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Service name'),
+    '#default_value' => variable_get('adobeanal_service', variable_get('site_name')),
+  );
+
+  $form['adobeanal_assetpath'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Asset path'),
+    '#description' => t('Path to your specific Adobe Analytics JavaScript (do not include the leading //assets.adobedtm.com/)'),
+    '#default_value' => variable_get('adobeanal_assetpath', 'somecode/someothercode.js'),
+  );
+
+  $options = array(
+    'not' => t('All pages except those listed'),
+    'only' => t('Only the listed pages'),
+  );
+
+  $form['adobeanal_visibility'] = array(
+    '#type' => 'radios',
+    '#title' => t('Show block on specific pages'),
+    '#options' => $options,
+    '#default_value' => variable_get('adobeanal_visibility', 'not'),
+  );
+
+  $form['adobeanal_pages'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Pages'),
+    '#default_value' => variable_get('adobeanal_pages', ''),
+    '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
+  );
+
+  $form['adobeanal_securepages'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Secure Pages'),
+    '#default_value' => variable_get('adobeanal_securepages', ''),
+    '#description' => t("Secure pages are pages where Adobe Analytics is included (not filtered out above), but have the access rights to 1.  Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
+  );
+
+  return system_settings_form($form);
+}
+
+function adobeanal_admin_validate($form, $form_state) {
+  $service = $form_state['values']['adobeanal_service'];
+  if (!preg_match('/^[-\w]+$/', $service)) {
+    form_set_error('adobeanal_service', 'Only letters, numbers, dashes and underscores are allowed.');
+  }
+
+  $asset = $form_state['values']['adobeanal_assetpath'];
+  if (!preg_match('/^[\w]+\/[-\w]+\.js$/', $asset)) {
+    form_set_error('adobeanal_assetpath', 'Invalid path format inputted.');
+  }
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function adobeanal_page_build(&$page) {
+  $service = check_plain(variable_get('adobeanal_service', NULL));
+
+  if (!_adobeanal_path_check() or empty($service)) {
+    return;
+  }
+
+  $service = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'property' => 'dcterms:service',
+      'content' => $service,
+    ),
+  );
+  drupal_add_html_head($service, 'adobeanal:dcterms:service');
+
+  $right = '2';
+
+  if (drupal_match_path( current_path(), variable_get('adobeanal_securepages', ''))) {
+    $right = '1';
+  }
+
+  $rights = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'property' => 'dcterms:accessRights',
+      'content' => $right,
+    ),
+  );
+  drupal_add_html_head($rights, 'adobeanal:dcterms:rights');
+
+  drupal_add_js('//assets.adobedtm.com/' . check_plain(variable_get('adobeanal_assetpath')), array('type' => 'external', 'scope' => 'header'));
+  drupal_add_js('_satellite.pageBottom();', array('type' => 'inline', 'scope' => 'footer'));
+}
+
+/**
+ * Checks path to ensure the adobe analytics should be displayed.
+ */
+function _adobeanal_path_check() {
+  $visibility = variable_get('adobeanal_visibility', 'not');
+  $pages = variable_get('adobeanal_pages', '');
+
+  $return = drupal_match_path( current_path(), $pages);
+
+  if ($visibility == 'not') {
+    return !$return;
+  }
+  return $return;
+}

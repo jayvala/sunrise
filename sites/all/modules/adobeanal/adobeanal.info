@@ -1,0 +1,11 @@
+name = Adobe Analytics
+description = Provides basic Adobe Analytics integration
+core = 7.x
+package = Analytics
+configure = admin/config/search/adobeanal
+
+; Information added by Drupal.org packaging script on 2019-04-25
+version = "7.x-1.0"
+core = "7.x"
+project = "adobeanal"
+datestamp = "1556222585"
