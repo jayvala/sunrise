@@ -1,0 +1,28 @@
+.box-admin-options{
+	padding: 0;
+	margin: 5px 0 0 5px;
+	position: absolute;
+	top: 0;
+}
+
+.box-admin-options li{
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+}
+
+.box-admin-options li a {
+	font-size: 12px;
+	cursor: pointer;
+	padding: 2px 10px;
+	color: #333 !important;
+	text-align: center;
+	font-weight: normal;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ddd #ddd #ccc;
+	background: #fff;
+	text-decoration: none;
+	border-radius: 3px;
+	font-family: arial;
+}
