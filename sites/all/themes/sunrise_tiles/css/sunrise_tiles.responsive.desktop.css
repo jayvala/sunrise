@@ -1,0 +1,80 @@
+/*
+ *   Important Information about this CSS File
+ *
+ * - Do not delete or rename this file, if you do not use it leave it blank (delete
+ *   everything) and the file will be skipped when you enable Production Mode in
+ *   the Global theme settings.
+ *
+ * - Read the _README file in this directory, it contains useful help and other information.
+ */
+
+/*# sourceMappingURL=responsive.desktop.css.map */
+
+/**
+ * Generic class for Responsive
+ */
+.full{
+	display: block !important;
+}
+
+.no-full{
+	display: none !important;
+}
+
+
+/* ===================================================================
+
+   Base Grid Sizes - 6 columns
+   
+   ================================================================= */
+.box{
+	margin: 5px 0.3%;
+}
+
+.full-hd-w-1{
+	width: 16%;
+}
+
+.full-hd-w-2{
+	width: 32.6%;
+}
+
+.full-hd-w-3{
+	width: 49.2%;
+}
+
+.full-hd-w-4{
+	width: 65.8%;
+}
+
+.full-hd-w-5{
+	width: 82.4%;
+}
+
+.full-hd-w-6{
+	width: 99%;
+}
+
+.full-hd-h-1{
+	width: 145px;
+}
+
+.full-hd-h-2{
+	width: 305px;
+}
+
+.full-hd-h-3{
+	width: 465px;
+}
+
+.full-hd-h-4{
+	width: 625px;
+}
+
+.full-hd-h-5{
+	width: 785px;
+}
+
+.full-hd-h-6{
+	width: 945px;
+}

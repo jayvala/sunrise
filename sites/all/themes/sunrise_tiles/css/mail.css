@@ -1,0 +1,123 @@
+/*
+	Document : mail.css
+	Created On: 27/08/2021
+	Author: Jay Vala
+	Description: Purpose of the stylesheet follows.
+*/
+
+root{
+	display: block;
+}
+
+#center{
+	width: 700px;
+	margin: 0 auto;
+}
+
+table{
+	font-family: "Arial";
+}
+
+.header td{
+	width: 700px;
+	background-color: #dd2618;
+	padding: 15px 20px;
+}
+
+.content .body-content{
+	padding: 50px;
+}
+
+.content .title-email{
+	font-size: 24px;
+	line-height: 28px;
+	font-weight: bold;
+	color: #555555;
+}
+
+.content p {
+	font-size: 14px;
+	line-height: 16px;
+	color: #555555;
+	font-family: "Arial";
+}
+
+.content a {
+	color: #de2617;
+}
+
+.content .button-email a {
+	color: #fff;
+	font-size: 14px;
+	line-height: 40px;
+	height: 40px;
+	width: 175px;
+	padding: 0 25px;
+	text-align: center;
+	background-color: #d93124;
+	display: block;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+/**
+ * Footer
+ */
+
+ /* Structure */
+ .footer td.footer-content{
+	 font-family: "Arial";
+	 font-size: 12px;
+	 overflow: hidden;
+	 color: #f96f64;
+	 width: 700px;
+	 padding: 25px 20px 30px;
+	 background-color: #dd2618;
+ }
+ 
+ /* Footer links */
+ .footer ul{
+	 margin: 10px 0 0 0;
+	 padding: 0;
+ }
+ 
+ .footer .list td{
+	 border-right: 1px solid #FFF;
+	 list-style: none;
+	 padding: 0 7px;
+ }
+ 
+ .footer .list td.last{
+	 border-right: none;
+	 padding-right: 0;
+	 margin-right: 0;
+ }
+ 
+ .footer .list td a {
+	 display: block;
+	 font-size: 11px;
+	 text-decoration: none;
+	 height: 16px;
+	 line-height: 16px;
+	 font-family: "Arial";
+	 color: #fff;
+ }
+ 
+ /* Social */
+ .footer .block-region-footer .block-inner{
+	 width: 100%;
+	 float: left;
+ }
+ 
+ /* Color */
+ .footer ul li a {
+	 color: #FFF;
+ }
+ 
+ .footer p {
+	 font-size: 11px;
+	 overflow: hidden;
+	 color: #f96f64;
+ }

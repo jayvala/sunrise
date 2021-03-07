@@ -1,0 +1,63 @@
+/*
+ *   Important Information about this CSS File
+ *
+ * - Do not delete or rename this file, if you do not use it leave it blank (delete
+ *   everything) and the file will be skipped when you enable Production Mode in
+ *   the Global theme settings.
+ *
+ * - Read the _README file in this directory, it contains useful help and other information.
+ */
+/* Increase the body font size on small touch devices */
+/* line 16, ../sass/responsive.smalltouch.landscape.scss */
+/**
+ * Generic class for Responsive
+ */
+.mobile{
+	display: block !important;
+}
+
+.no-mobile{
+	display: none !important;
+}
+
+
+/* ===================================================================
+
+   Base Grid Sizes - 2 columns
+   
+   ================================================================= */
+.box{
+	margin: 5px 1%;
+}
+
+.mobile-w-1{
+	width: 48%;
+}
+
+.mobile-w-2{
+	width: 99%;
+}
+
+.mobile-h-1{
+	width: 150px;
+}
+
+.mobile-h-2{
+	width: 310px;
+}
+
+.mobile-h-3{
+	width: 470px;
+}
+
+.mobile-h-4{
+	width: 630px;
+}
+
+.mobile-h-5{
+	width: 790px;
+}
+
+.mobile-h-6{
+	width: 950px;
+}

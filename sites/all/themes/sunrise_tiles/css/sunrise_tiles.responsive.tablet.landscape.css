@@ -1,0 +1,68 @@
+/*
+ *   Important Information about this CSS File
+ *
+ * - Do not delete or rename this file, if you do not use it leave it blank (delete 
+ *   everything) and the file will be skipped when you enable Production Mode in
+ *   the Global theme settings.
+ *
+ * - Read the _README file in this directory, it contains useful help and other information.
+ */
+
+/*# sourceMappingURL=responsive.tablet.landscape.css.map */
+.desktop{
+	display: block !important;
+}
+
+.no-desktop{
+	display: none !important;
+}
+
+
+/* ===================================================================
+
+   Base Grid Sizes - 6 columns
+   
+   ================================================================= */
+.box{
+	margin: 5px 5px;;
+}
+
+.desktop-w-1{
+	width: 240px;
+}
+
+.desktop-w-2{
+	width: 490px;
+}
+
+.desktop-w-3{
+	width: 740px;
+}
+
+.desktop-w-4{
+	width: 990px;
+}
+
+.desktop-h-1{
+	width: 115px;
+}
+
+.desktop-h-2{
+	width: 240px;
+}
+
+.desktop-h-3{
+	width: 365px;
+}
+
+.desktop-h-4{
+	width: 490px;
+}
+
+.desktop-h-5{
+	width: 615px;
+}
+
+.desktop-h-6{
+	width: 740px;
+}
